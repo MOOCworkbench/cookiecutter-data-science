@@ -1,5 +1,6 @@
 click
 Sphinx
+sphinx-click
 coverage
 awscli
 flake8
