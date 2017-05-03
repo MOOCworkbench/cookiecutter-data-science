@@ -8,7 +8,7 @@ from dotenv import find_dotenv, load_dotenv
 import pandas
 from pandas.io.json import build_table_schema
 
-SCHEMA_LOCATION = 'data/schema/schema.json'
+SCHEMA_LOCATION = 'schema/schema.json'
 
 
 @click.command()
