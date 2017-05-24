@@ -3,6 +3,7 @@ import unittest
 if __name__ == '__main__':
     testmodules = [
         'src.data.tests',
+        'src.features.tests',
     ]
 
     suite = unittest.TestSuite()
