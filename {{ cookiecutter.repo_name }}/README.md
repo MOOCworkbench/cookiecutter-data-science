@@ -3,6 +3,18 @@
 
 {{cookiecutter.description}}
 
+Quick overview
+------------
+This project is divided into a number of folders. The src/ folder is the folder that holds the source code of this project. Use this to get started. 
+
+## src/data
+The data folder in src/ contains a file make_dataset.py. This file uses a library called click. You can get started with make_dataset.py by calling it as follows:
+`python make_dataset.py [input_file_path] [output_file_path]`
+This way you do not have to hardcode a data set into your source code. For example, if your data resides in the data folder, you can use:
+`python make_dataset.py ../../data/input.csv ../../data/output.csv`
+You can use relative paths, so that explains the ../
+
+
 Project Organization
 ------------
 
