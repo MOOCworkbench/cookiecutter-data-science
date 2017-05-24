@@ -1,11 +1,10 @@
-.PHONY: clean data lint requirements test
+.PHONY: clean data lint requirements test schema
 
 #################################################################################
 # GLOBALS                                                                       #
 #################################################################################
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-BUCKET = [OPTIONAL] your-bucket-for-syncing-data (do not include 's3://')
 PROJECT_NAME = Workbench-Python-Experiment
 PYTHON_INTERPRETER = python3
 
@@ -25,11 +24,15 @@ requirements: test_environment
 
 ## Make Dataset
 data: requirements
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py
+	$(PYTHON_INTERPRETER) src/data/make_dataset.py ${input_filepath} ${output_filepath}
 
 ## Delete all compiled Python files
 clean:
 	find . -name "*.pyc" -exec rm {} \;
+
+## Infer the used data schema automatically
+schema:
+	$(PYTHON_INTERPRETER) src/schema/make_schema.py ${input_filepath}
 
 ## Lint using flake8
 lint:
