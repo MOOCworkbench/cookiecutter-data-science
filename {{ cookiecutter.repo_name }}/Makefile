@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements
+.PHONY: clean data lint requirements test
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -56,6 +56,11 @@ endif
 ## Test python environment is setup correctly
 test_environment:
 	$(PYTHON_INTERPRETER) test_environment.py
+
+## Run all tests in this project
+test: test_environment
+	python test_runner.py
+
 
 #################################################################################
 # PROJECT RULES                                                                 #
