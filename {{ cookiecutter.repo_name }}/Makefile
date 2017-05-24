@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements test schema
+.PHONY: clean data lint requirements test schema gen_docs init_docs
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -64,6 +64,13 @@ test_environment:
 test: test_environment
 	python test_runner.py
 
+## Regenerate the documentation
+gen_docs:
+	sphinx-apidoc -o docs src/data
+	sphinx-apidoc -o docs src/features
+	sphinx-apidoc -o docs src/models
+	sphinx-apidoc -o docs src/visualization
+	sphinx-build docs/ docs/_build/html
 
 #################################################################################
 # PROJECT RULES                                                                 #
