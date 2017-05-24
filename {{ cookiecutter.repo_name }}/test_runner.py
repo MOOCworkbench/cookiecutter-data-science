@@ -4,6 +4,9 @@ if __name__ == '__main__':
     testmodules = [
         'src.data.tests',
         'src.features.tests',
+        'src.models.test_train_model',
+        'src.models.test_predict_model',
+        'src.visualization.tests',
     ]
 
     suite = unittest.TestSuite()
