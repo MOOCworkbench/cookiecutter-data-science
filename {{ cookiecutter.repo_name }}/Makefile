@@ -1,13 +1,13 @@
-.PHONY: clean data lint requirements sync_data_to_s3 sync_data_from_s3
+.PHONY: clean data lint requirements
 
 #################################################################################
 # GLOBALS                                                                       #
 #################################################################################
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-BUCKET = {{ cookiecutter.s3_bucket }}
-PROJECT_NAME = {{ cookiecutter.repo_name }}
-PYTHON_INTERPRETER = {{ cookiecutter.python_interpreter }}
+BUCKET = [OPTIONAL] your-bucket-for-syncing-data (do not include 's3://')
+PROJECT_NAME = Workbench-Python-Experiment
+PYTHON_INTERPRETER = python3
 
 ifeq (,$(shell which conda))
 HAS_CONDA=False
@@ -34,14 +34,6 @@ clean:
 ## Lint using flake8
 lint:
 	flake8 --exclude=lib/,bin/,docs/conf.py .
-
-## Upload Data to S3
-sync_data_to_s3:
-	aws s3 sync data/ s3://$(BUCKET)/data/
-
-## Download Data from S3
-sync_data_from_s3:
-	aws s3 sync s3://$(BUCKET)/data/ data/
 
 ## Set up python interpreter environment
 create_environment:
