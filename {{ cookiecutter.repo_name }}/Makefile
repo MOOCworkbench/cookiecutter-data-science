@@ -30,7 +30,7 @@ data: requirements
 clean:
 	find . -name "*.pyc" -exec rm {} \;
 
-## Infer the used data schema automatically
+## Infer the used data schema automatically to schema/schema.json
 schema:
 	$(PYTHON_INTERPRETER) src/schema/make_schema.py ${input_filepath}
 

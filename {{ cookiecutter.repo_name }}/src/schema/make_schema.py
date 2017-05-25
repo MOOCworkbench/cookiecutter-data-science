@@ -3,10 +3,12 @@ import os
 import click
 import logging
 import json
+import io
+import csv
 from dotenv import find_dotenv, load_dotenv
 
-import pandas
-from pandas.io.json import build_table_schema
+from tableschema import infer
+
 
 SCHEMA_LOCATION = 'schema/schema.json'
 
@@ -14,26 +16,34 @@ SCHEMA_LOCATION = 'schema/schema.json'
 @click.command()
 @click.argument('input_filepath', type=click.Path(exists=True))
 def main(input_filepath):
-    """ Create your data frame from your data set and call the function
-        pdf_to_json to save a JSON table schema representing your data.
-
+    """ Loads the data from input_filepath and infers the data schema,
+        finally saving a JSON table schema representing your data.
+        (recommended to run this file with a sliced dataset of max 100 lines)
     """
     logger = logging.getLogger(__name__)
-    logger.info('making final data set from raw data')
+    logger.info('making data schema for workbench')
 
-    df = pandas.read_csv(input_filepath)
-    pd_to_json(df, logger)
+    with io.open(input_filepath) as stream:
+        headers = stream.readline().rstrip('\n').split(',')
+        valid_headers = True
+        for header in headers:
+            if not header.islower():
+                logger.error("ensure that all header names are lowercase: %s", header)
+                valid_headers = False
+        if valid_headers:
+            values = csv.reader(stream)
+            schema = infer(headers, values)
+            schema_to_json(schema, logger)
 
-
-def pd_to_json(df_or_series, logger):
-    table_schema = build_table_schema(df_or_series)
-    logger.info('created table schema: {0}'.format(table_schema))
-    table_schema_json = json.dumps(table_schema)
+def schema_to_json(schema, logger):
+    logger.info('created table schema: {0}'.format(schema))
+    table_schema_json = json.dumps(schema)
     output_file = os.path.join(project_dir, SCHEMA_LOCATION)
     with open(output_file, 'w') as out:
         out.write(table_schema_json)
         out.close()
     logger.info('written table schema to {0}'.format(SCHEMA_LOCATION))
+    logger.info('you should now commit and push the schema/schema.json file')
 
 
 if __name__ == '__main__':
