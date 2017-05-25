@@ -22,6 +22,7 @@ def main(input_filepath):
     """
     logger = logging.getLogger(__name__)
     logger.info('making data schema for workbench')
+    logger.info('(recommended to run this file with a sliced dataset of max 100 lines)')
 
     with io.open(input_filepath) as stream:
         headers = stream.readline().rstrip('\n').split(',')
