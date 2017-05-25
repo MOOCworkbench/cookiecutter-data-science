@@ -65,12 +65,12 @@ test: test_environment
 	python test_runner.py
 
 ## Regenerate the documentation
-gen_docs:
+docs:
 	sphinx-apidoc -o docs src/data
 	sphinx-apidoc -o docs src/features
 	sphinx-apidoc -o docs src/models
 	sphinx-apidoc -o docs src/visualization
-	sphinx-build docs/ docs/_build/html
+	sphinx-build -b coverage docs/ docs/_build/html
 
 #################################################################################
 # PROJECT RULES                                                                 #
