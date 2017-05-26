@@ -5,7 +5,7 @@
 #################################################################################
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-PROJECT_NAME = Workbench-Python-Experiment
+PROJECT_NAME = {{cookiecutter.project_name}}
 PYTHON_INTERPRETER = python3
 
 ifeq (,$(shell which conda))
@@ -20,7 +20,7 @@ endif
 
 ## Install Python Dependencies
 requirements: test_environment
-	pip install -r requirements.txt
+	pip3 install -r requirements.txt
 
 ## Make Dataset
 data: requirements
@@ -49,7 +49,7 @@ else
 endif
 		@echo ">>> New conda env created. Activate with:\nsource activate $(PROJECT_NAME)"
 else
-	@pip install -q virtualenv virtualenvwrapper
+	@pip3 install -q virtualenv virtualenvwrapper
 	@echo ">>> Installing virtualenvwrapper if not already intalled.\nMake sure the following lines are in shell startup file\n\
 	export WORKON_HOME=$$HOME/.virtualenvs\nexport PROJECT_HOME=$$HOME/Devel\nsource /usr/local/bin/virtualenvwrapper.sh\n"
 	@bash -c "source `which virtualenvwrapper.sh`;mkvirtualenv $(PROJECT_NAME) --python=$(PYTHON_INTERPRETER)"
