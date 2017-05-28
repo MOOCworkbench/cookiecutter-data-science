@@ -5,7 +5,7 @@
 #################################################################################
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-PROJECT_NAME = Workbench-Python-Experiment
+PROJECT_NAME = {{cookiecutter.project_name}}
 PYTHON_INTERPRETER = python3
 
 ifeq (,$(shell which conda))
