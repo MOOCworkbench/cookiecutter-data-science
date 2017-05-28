@@ -1,3 +1,4 @@
+--extra-index-url https://packages.jochem.xyz/simple
 click
 Sphinx
 sphinx-click
