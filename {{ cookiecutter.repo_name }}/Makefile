@@ -62,7 +62,7 @@ test_environment:
 
 ## Run all tests in this project
 test: test_environment
-	python test_runner.py
+	$(PYTHON_INTERPRETER) test_runner.py
 
 ## Document your modules
 documentation:
