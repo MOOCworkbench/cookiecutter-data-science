@@ -64,8 +64,8 @@ test_environment:
 test: test_environment
 	python test_runner.py
 
-## Regenerate the documentation
-docs:
+## Document your modules
+documentation:
 	sphinx-apidoc -o docs src/data
 	sphinx-apidoc -o docs src/features
 	sphinx-apidoc -o docs src/models
