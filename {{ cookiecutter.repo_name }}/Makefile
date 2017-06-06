@@ -66,6 +66,7 @@ test: test_environment
 
 ## Document your modules
 documentation:
+	export SPHINX_APIDOC_OPTIONS=members,show-inheritance
 	sphinx-apidoc -o docs src/data
 	sphinx-apidoc -o docs src/features
 	sphinx-apidoc -o docs src/models
