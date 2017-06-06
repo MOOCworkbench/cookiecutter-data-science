@@ -1,6 +1,6 @@
 import unittest
 
-from .predict_model import main
+from predict_model import main
 
 
 class TestPredictModel(unittest.TestCase):

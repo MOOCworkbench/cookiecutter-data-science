@@ -1,6 +1,6 @@
 import unittest
 
-from .build_features import main
+from build_features import main
 
 
 class TestMain(unittest.TestCase):

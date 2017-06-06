@@ -9,3 +9,4 @@ pandas>=0.20.0rc1
 jsontableschema
 tableschema
 coveralls
+nose

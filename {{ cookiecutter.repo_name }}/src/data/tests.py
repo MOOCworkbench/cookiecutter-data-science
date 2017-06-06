@@ -2,7 +2,7 @@ import unittest
 
 from click.testing import CliRunner
 
-from .make_dataset import main
+from make_dataset import main
 
 
 class TestMain(unittest.TestCase):

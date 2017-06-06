@@ -2,7 +2,7 @@ import unittest
 
 from click.testing import CliRunner
 
-from .visualize import main
+from visualize import main
 
 
 class TestVisualization(unittest.TestCase):

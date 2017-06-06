@@ -1,6 +1,6 @@
 import unittest
 
-from .train_model import main
+from train_model import main
 
 
 class TestTrainModel(unittest.TestCase):
