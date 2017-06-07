@@ -5,7 +5,7 @@
 
 Quick overview
 ------------
-This project is divided into a number of folders. The src/ folder is the folder that holds the source code of this project. Use this to get started. 
+The src/ folder is the folder that holds the source code of this project. 
 
 ## src/data
 The data folder in src/ contains a file make_dataset.py. This file uses a library called click. You can get started with make_dataset.py by calling it as follows:
@@ -13,6 +13,12 @@ The data folder in src/ contains a file make_dataset.py. This file uses a librar
 This way you do not have to hardcode a data set into your source code. For example, if your data resides in the data folder, you can use:
 `python make_dataset.py ../../data/input.csv ../../data/output.csv`
 You can use relative paths, so that explains the ../
+
+## data/
+The data folder contains the data you use in this experiment. This folder is ignored by git to keep your data private, so this folder is not present in your experiment.
+
+## schema/
+In absence of the data, to help you with reusing this experiment a data schema is provided. This data schema is in the [JSON Table Schema format](https://specs.frictionlessdata.io/table-schema/). You can use this data schema to [validate](https://odileeds.github.io/JSONSchema/), and if neccessary convert, your own data set to ensure compatibility with this experiment. 
 
 
 Project Organization
